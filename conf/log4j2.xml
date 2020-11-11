@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="WARN">
+	<CustomLevels>
+		<CustomLevel name="MSG" intLevel="50" />
+	</CustomLevels>
+
+	<Appenders>
+		<File name="FILELOG" fileName="tcpserver.log">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+			</PatternLayout>
+		</File>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%p %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.hibernate" additivity="false" level="error" />
+
+		<Root level="ALL">
+			<AppenderRef ref="FILELOG" level="ERROR" />
+			<AppenderRef ref="FILELOG" level="MSG" />
+			
+			<AppenderRef ref="STDOUT" level="ALL" />
+		</Root>
+	</Loggers>
+</Configuration>
